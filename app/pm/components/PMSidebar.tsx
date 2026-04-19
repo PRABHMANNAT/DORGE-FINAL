@@ -60,7 +60,7 @@ export default function PMSidebar() {
         >
             {/* Logo area */}
             <div className={cn("flex items-center px-0 w-full", isExpanded ? "justify-start px-2 gap-3" : "justify-center")}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0 hover:bg-black/5 dark:hover:bg-white/5">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0 hover:bg-[#241f18]/5 dark:hover:bg-black/5 dark:hover:bg-white/5">
                     <IngenLogo size={32} className="w-8 h-8 rounded-lg" />
                 </div>
                 <div className={cn(
@@ -99,7 +99,7 @@ export default function PMSidebar() {
                             {/* Icon Wrapper */}
                             <div className={cn(
                                 "relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200",
-                                isActive ? "text-[#DF5F12]" : "text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-black/5 dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5"
+                                isActive ? "text-[#DF5F12]" : "text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-[#241f18]/5 dark:group-hover:bg-black/5 dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5"
                             )}>
                                 <item.icon className="w-5 h-5" strokeWidth={isActive ? 2.5 : 2} />
                             </div>
@@ -130,7 +130,7 @@ export default function PMSidebar() {
                     "h-10 flex items-center transition-all duration-200 relative group w-full",
                     isExpanded ? "justify-start px-2" : "justify-center"
                 )}>
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-black/5 transition-all dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-[#241f18]/5 dark:group-hover:bg-black/5 transition-all dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5">
                         <Settings className="w-5 h-5" />
                     </div>
                     <span className={cn(
@@ -151,7 +151,7 @@ export default function PMSidebar() {
                         isExpanded ? "justify-start px-2" : "justify-center"
                     )}
                 >
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-black/5 transition-all dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl text-[#241f18]/45 group-hover:text-[#241f18] group-hover:bg-[#241f18]/5 dark:group-hover:bg-black/5 transition-all dark:text-white/40 dark:group-hover:text-white dark:group-hover:bg-white/5">
                         <ThemeIcon className="w-5 h-5" strokeWidth={2} />
                     </div>
                     <span className={cn(
@@ -169,9 +169,9 @@ export default function PMSidebar() {
 
                 <div className={cn(
                     "flex items-center rounded-xl transition-all duration-300",
-                    isExpanded ? "bg-black/5 pr-4 p-1 gap-3 dark:bg-white/5" : "p-0 justify-center w-10 h-10"
+                    isExpanded ? "bg-[#241f18]/5 dark:bg-black/5 pr-4 p-1 gap-3 dark:bg-white/5" : "p-0 justify-center w-10 h-10"
                 )}>
-                    <div className="w-8 h-8 rounded-full ring-2 ring-white/80 shrink-0 overflow-hidden relative dark:ring-black">
+                    <div className="w-8 h-8 rounded-full ring-2 ring-[#241f18]/10 dark:ring-white/80 shrink-0 overflow-hidden relative dark:ring-black">
                         <Image src="/placeholder-user.jpg" alt="User" fill className="object-cover" />
                     </div>
                     <div className={cn(

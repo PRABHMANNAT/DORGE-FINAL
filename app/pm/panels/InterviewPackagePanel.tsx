@@ -48,32 +48,32 @@ export default function InterviewPackagePanel({ onClose }: { onClose: () => void
     }
 
     return (
-        <div className="h-full flex flex-col bg-[#0A0A0A]">
+        <div className="h-full flex flex-col bg-[#fffaf2] dark:bg-[#0A0A0A]">
             {/* Header */}
-            <div className="px-6 py-5 border-b border-white/[0.06] flex items-center justify-between">
+            <div className="px-6 py-5 border-b border-[#ded2c2]/60 dark:border-white/[0.06] flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center">
                         <ClipboardList className="w-5 h-5 text-violet-400" />
                     </div>
                     <div>
-                        <h2 className="text-sm font-semibold text-white">Interview Package Generator</h2>
-                        <p className="text-[11px] text-white/40 uppercase tracking-wider">Structured Interview Plan</p>
+                        <h2 className="text-sm font-semibold text-[#241f18] dark:text-white">Interview Package Generator</h2>
+                        <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 uppercase tracking-wider">Structured Interview Plan</p>
                     </div>
                 </div>
-                <button onClick={onClose} className="w-8 h-8 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] flex items-center justify-center transition-colors">
-                    <X className="w-4 h-4 text-white/40" />
+                <button onClick={onClose} className="w-8 h-8 rounded-lg bg-[#241f18]/[0.04] dark:bg-white/[0.04] hover:bg-[#241f18]/[0.08] dark:hover:bg-white/[0.08] flex items-center justify-center transition-colors">
+                    <X className="w-4 h-4 text-[#241f18]/45 dark:text-white/40" />
                 </button>
             </div>
 
             {/* Tabs */}
-            <div className="px-4 pt-3 pb-1 flex gap-1 overflow-x-auto border-b border-white/[0.06]">
+            <div className="px-4 pt-3 pb-1 flex gap-1 overflow-x-auto border-b border-[#ded2c2]/60 dark:border-white/[0.06]">
                 {TABS.map(t => (
                     <button
                         key={t.key}
                         onClick={() => setTab(t.key)}
                         className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap ${tab === t.key
                                 ? 'bg-violet-500/15 text-violet-400 border border-violet-500/30'
-                                : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
+                                : 'text-[#241f18]/45 dark:text-white/40 hover:text-[#241f18]/60 dark:hover:text-white/60 hover:bg-[#241f18]/[0.04] dark:hover:bg-white/[0.04]'
                             }`}
                     >
                         <t.icon className="w-3.5 h-3.5" />
@@ -114,8 +114,8 @@ function PlanTab() {
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-semibold text-white">{plan.roleTitle}</h3>
-                    <p className="text-[11px] text-white/40 mt-0.5">{plan.totalDuration}</p>
+                    <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">{plan.roleTitle}</h3>
+                    <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 mt-0.5">{plan.totalDuration}</p>
                 </div>
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20">
                     <Clock className="w-3 h-3 text-violet-400" />
@@ -126,36 +126,36 @@ function PlanTab() {
             {/* Timeline */}
             <div className="space-y-3">
                 {plan.sections.map((sec, i) => (
-                    <div key={sec.id} className={`relative rounded-xl border p-4 ${SECTION_COLORS[sec.type] || 'border-white/10 bg-white/[0.02]'}`}>
+                    <div key={sec.id} className={`relative rounded-xl border p-4 ${SECTION_COLORS[sec.type] || 'border-[#ded2c2] dark:border-white/10 bg-[#241f18]/[0.02] dark:bg-white/[0.02]'}`}>
                         <div className="flex items-start justify-between mb-3">
                             <div className="flex items-center gap-2">
-                                <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white/60">{i + 1}</span>
+                                <span className="w-6 h-6 rounded-full bg-[#241f18]/10 dark:bg-white/10 flex items-center justify-center text-[10px] font-bold text-[#241f18]/60 dark:text-white/60">{i + 1}</span>
                                 <div>
-                                    <h4 className="text-[13px] font-semibold text-white">{sec.title}</h4>
-                                    {sec.interviewer && <p className="text-[10px] text-white/40 mt-0.5">Interviewer: {sec.interviewer}</p>}
+                                    <h4 className="text-[13px] font-semibold text-[#241f18] dark:text-white">{sec.title}</h4>
+                                    {sec.interviewer && <p className="text-[10px] text-[#241f18]/45 dark:text-white/40 mt-0.5">Interviewer: {sec.interviewer}</p>}
                                 </div>
                             </div>
-                            <span className="text-[10px] text-white/50 font-mono bg-white/[0.06] px-2 py-0.5 rounded">{sec.duration}</span>
+                            <span className="text-[10px] text-[#241f18]/55 dark:text-white/50 font-mono bg-[#241f18]/[0.06] dark:bg-white/[0.06] px-2 py-0.5 rounded">{sec.duration}</span>
                         </div>
 
                         <div className="space-y-2 mb-3">
-                            <p className="text-[10px] text-white/30 uppercase tracking-wider font-medium">Objectives</p>
+                            <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 uppercase tracking-wider font-medium">Objectives</p>
                             <div className="flex flex-wrap gap-1.5">
                                 {sec.objectives.map((obj, j) => (
-                                    <span key={j} className="text-[10px] text-white/60 bg-white/[0.06] px-2 py-0.5 rounded-full">{obj}</span>
+                                    <span key={j} className="text-[10px] text-[#241f18]/60 dark:text-white/60 bg-[#241f18]/[0.06] dark:bg-white/[0.06] px-2 py-0.5 rounded-full">{obj}</span>
                                 ))}
                             </div>
                         </div>
 
                         <div className="space-y-1.5">
-                            <p className="text-[10px] text-white/30 uppercase tracking-wider font-medium">Sample Probes</p>
+                            <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 uppercase tracking-wider font-medium">Sample Probes</p>
                             {sec.probes.slice(0, 2).map((p, j) => (
-                                <p key={j} className="text-[11px] text-white/50 pl-3 border-l-2 border-white/10">{p}</p>
+                                <p key={j} className="text-[11px] text-[#241f18]/55 dark:text-white/50 pl-3 border-l-2 border-[#ded2c2] dark:border-white/10">{p}</p>
                             ))}
                         </div>
 
                         {/* Duration bar */}
-                        <div className="mt-3 h-1 rounded-full bg-white/[0.06] overflow-hidden">
+                        <div className="mt-3 h-1 rounded-full bg-[#241f18]/[0.06] dark:bg-white/[0.06] overflow-hidden">
                             <div className="h-full rounded-full bg-gradient-to-r from-violet-500/60 to-violet-500/20" style={{ width: `${(sec.durationMinutes / totalMinutes) * 100}%` }} />
                         </div>
                     </div>
@@ -178,8 +178,8 @@ function QuestionsTab({ expandedItems, toggleExpand }: { expandedItems: Set<stri
     return (
         <div className="space-y-5">
             <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-white">Competency Question Bank</h3>
-                <span className="text-[10px] text-white/40">{DEMO_QUESTION_BANK.length} questions</span>
+                <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">Competency Question Bank</h3>
+                <span className="text-[10px] text-[#241f18]/45 dark:text-white/40">{DEMO_QUESTION_BANK.length} questions</span>
             </div>
 
             {categories.map(cat => {
@@ -192,16 +192,16 @@ function QuestionsTab({ expandedItems, toggleExpand }: { expandedItems: Set<stri
                             const dc = DIFFICULTY_CONFIG[q.difficulty]
                             const isOpen = expandedItems.has(q.id)
                             return (
-                                <div key={q.id} className="rounded-xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
+                                <div key={q.id} className="rounded-xl border border-[#ded2c2] dark:border-white/[0.08] bg-[#241f18]/[0.02] dark:bg-white/[0.02] overflow-hidden">
                                     <button onClick={() => toggleExpand(q.id)} className="w-full px-4 py-3 flex items-start gap-3 text-left">
-                                        {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" />}
+                                        {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 mt-0.5 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 mt-0.5 shrink-0" />}
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-[12px] text-white/80">{q.question}</p>
+                                            <p className="text-[12px] text-[#241f18]/80 dark:text-white/80">{q.question}</p>
                                             <div className="flex items-center gap-2 mt-1.5">
                                                 <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded ${dc.color}`}>{dc.label}</span>
-                                                <span className="text-[9px] text-white/30">{q.competency}</span>
-                                                <span className="text-[9px] text-white/20">•</span>
-                                                <span className="text-[9px] text-white/30">{q.timeAllocation}</span>
+                                                <span className="text-[9px] text-[#241f18]/45 dark:text-white/30">{q.competency}</span>
+                                                <span className="text-[9px] text-[#241f18]/45 dark:text-white/20">•</span>
+                                                <span className="text-[9px] text-[#241f18]/45 dark:text-white/30">{q.timeAllocation}</span>
                                             </div>
                                         </div>
                                     </button>
@@ -209,18 +209,18 @@ function QuestionsTab({ expandedItems, toggleExpand }: { expandedItems: Set<stri
                                         <motion.div
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: "auto", opacity: 1 }}
-                                            className="px-4 pb-3 border-t border-white/[0.06] pt-3 space-y-2"
+                                            className="px-4 pb-3 border-t border-[#ded2c2]/60 dark:border-white/[0.06] pt-3 space-y-2"
                                         >
                                             <div>
                                                 <p className="text-[10px] text-emerald-400/80 font-medium mb-1">✅ Expected Signals</p>
                                                 {q.expectedSignals.map((s, i) => (
-                                                    <p key={i} className="text-[11px] text-white/50 pl-3 border-l border-emerald-500/20 mb-1">{s}</p>
+                                                    <p key={i} className="text-[11px] text-[#241f18]/55 dark:text-white/50 pl-3 border-l border-emerald-500/20 mb-1">{s}</p>
                                                 ))}
                                             </div>
                                             <div>
                                                 <p className="text-[10px] text-red-400/80 font-medium mb-1">🚩 Red Flags</p>
                                                 {q.redFlags.map((f, i) => (
-                                                    <p key={i} className="text-[11px] text-white/50 pl-3 border-l border-red-500/20 mb-1">{f}</p>
+                                                    <p key={i} className="text-[11px] text-[#241f18]/55 dark:text-white/50 pl-3 border-l border-red-500/20 mb-1">{f}</p>
                                                 ))}
                                             </div>
                                         </motion.div>
@@ -246,27 +246,27 @@ function FollowupsTab() {
     return (
         <div className="space-y-5">
             <div>
-                <h3 className="text-sm font-semibold text-white">Dynamic Follow-up Generator</h3>
-                <p className="text-[11px] text-white/40 mt-0.5">Adapts based on candidate response quality</p>
+                <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">Dynamic Follow-up Generator</h3>
+                <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 mt-0.5">Adapts based on candidate response quality</p>
             </div>
 
             {Object.entries(grouped).map(([question, followUps]) => (
-                <div key={question} className="rounded-xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
-                    <div className="px-4 py-3 border-b border-white/[0.06]">
-                        <p className="text-[10px] text-white/30 uppercase tracking-wider font-medium mb-1">Base Question</p>
-                        <p className="text-[12px] text-white/70 font-medium">{question}</p>
+                <div key={question} className="rounded-xl border border-[#ded2c2] dark:border-white/[0.08] bg-[#241f18]/[0.02] dark:bg-white/[0.02] overflow-hidden">
+                    <div className="px-4 py-3 border-b border-[#ded2c2]/60 dark:border-white/[0.06]">
+                        <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 uppercase tracking-wider font-medium mb-1">Base Question</p>
+                        <p className="text-[12px] text-[#241f18]/70 dark:text-white/70 font-medium">{question}</p>
                     </div>
                     <div className="p-3 space-y-2">
                         {followUps.map(fu => {
                             const rc = RESPONSE_QUALITY_CONFIG[fu.responseQuality]
                             return (
-                                <div key={fu.id} className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+                                <div key={fu.id} className="rounded-lg border border-[#ded2c2]/60 dark:border-white/[0.06] bg-[#241f18]/[0.02] dark:bg-white/[0.02] p-3">
                                     <div className="flex items-center gap-2 mb-2">
                                         <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded ${rc.color}`}>{rc.icon} {rc.label} Response</span>
-                                        <span className="text-[9px] text-white/20">Depth {fu.depth}</span>
+                                        <span className="text-[9px] text-[#241f18]/45 dark:text-white/20">Depth {fu.depth}</span>
                                     </div>
-                                    <p className="text-[11px] text-white/60 mb-1.5">{fu.followUp}</p>
-                                    <p className="text-[10px] text-white/30 italic">{fu.purpose}</p>
+                                    <p className="text-[11px] text-[#241f18]/60 dark:text-white/60 mb-1.5">{fu.followUp}</p>
+                                    <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 italic">{fu.purpose}</p>
                                 </div>
                             )
                         })}
@@ -293,19 +293,19 @@ function AntiCheatTab() {
     return (
         <div className="space-y-5">
             <div>
-                <h3 className="text-sm font-semibold text-white">Anti-Cheat Question Variants</h3>
-                <p className="text-[11px] text-white/40 mt-0.5">Isomorphic versions prevent memorisation and leakage</p>
+                <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">Anti-Cheat Question Variants</h3>
+                <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 mt-0.5">Isomorphic versions prevent memorisation and leakage</p>
             </div>
 
             {Object.entries(grouped).map(([origId, variants]) => (
-                <div key={origId} className="rounded-xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
-                    <div className="px-4 py-3 border-b border-white/[0.06]">
-                        <p className="text-[10px] text-white/30 uppercase tracking-wider font-medium mb-1">Original</p>
-                        <p className="text-[12px] text-white/70 font-medium">{original[origId]?.question || origId}</p>
+                <div key={origId} className="rounded-xl border border-[#ded2c2] dark:border-white/[0.08] bg-[#241f18]/[0.02] dark:bg-white/[0.02] overflow-hidden">
+                    <div className="px-4 py-3 border-b border-[#ded2c2]/60 dark:border-white/[0.06]">
+                        <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 uppercase tracking-wider font-medium mb-1">Original</p>
+                        <p className="text-[12px] text-[#241f18]/70 dark:text-white/70 font-medium">{original[origId]?.question || origId}</p>
                     </div>
                     <div className="p-3 grid gap-2">
                         {variants.map(v => (
-                            <div key={v.id} className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+                            <div key={v.id} className="rounded-lg border border-[#ded2c2]/60 dark:border-white/[0.06] bg-[#241f18]/[0.02] dark:bg-white/[0.02] p-3">
                                 <div className="flex items-center justify-between mb-2">
                                     <span className="text-[10px] font-semibold text-violet-400">{v.variantLabel}</span>
                                     <div className="flex items-center gap-1.5">
@@ -317,8 +317,8 @@ function AntiCheatTab() {
                                         )}
                                     </div>
                                 </div>
-                                <p className="text-[11px] text-white/60 mb-1.5">{v.question}</p>
-                                <p className="text-[10px] text-white/30">Context: {v.context}</p>
+                                <p className="text-[11px] text-[#241f18]/60 dark:text-white/60 mb-1.5">{v.question}</p>
+                                <p className="text-[10px] text-[#241f18]/45 dark:text-white/30">Context: {v.context}</p>
                             </div>
                         ))}
                     </div>
@@ -333,41 +333,41 @@ function GuidanceTab({ expandedItems, toggleExpand }: { expandedItems: Set<strin
     return (
         <div className="space-y-5">
             <div>
-                <h3 className="text-sm font-semibold text-white">Interviewer Guidance Pack</h3>
-                <p className="text-[11px] text-white/40 mt-0.5">Expected answers, probing strategies, and scoring</p>
+                <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">Interviewer Guidance Pack</h3>
+                <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 mt-0.5">Expected answers, probing strategies, and scoring</p>
             </div>
 
             {DEMO_INTERVIEWER_GUIDANCE.map(g => {
                 const isOpen = expandedItems.has(g.id)
                 return (
-                    <div key={g.id} className="rounded-xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
+                    <div key={g.id} className="rounded-xl border border-[#ded2c2] dark:border-white/[0.08] bg-[#241f18]/[0.02] dark:bg-white/[0.02] overflow-hidden">
                         <button onClick={() => toggleExpand(g.id)} className="w-full px-4 py-3 flex items-start gap-2 text-left">
-                            {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" />}
-                            <p className="text-[12px] text-white/70 font-medium">{g.question}</p>
+                            {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 mt-0.5 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 mt-0.5 shrink-0" />}
+                            <p className="text-[12px] text-[#241f18]/70 dark:text-white/70 font-medium">{g.question}</p>
                         </button>
                         {isOpen && (
-                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-4 pb-4 space-y-3 border-t border-white/[0.06] pt-3">
+                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-4 pb-4 space-y-3 border-t border-[#ded2c2]/60 dark:border-white/[0.06] pt-3">
                                 <div>
                                     <p className="text-[10px] text-blue-400/80 font-medium mb-1">📝 Expected Answer</p>
-                                    <p className="text-[11px] text-white/50">{g.expectedAnswer}</p>
+                                    <p className="text-[11px] text-[#241f18]/55 dark:text-white/50">{g.expectedAnswer}</p>
                                 </div>
                                 <div>
                                     <p className="text-[10px] text-violet-400/80 font-medium mb-1">🎯 Probing Strategy</p>
                                     {g.probingStrategy.map((s, i) => (
-                                        <p key={i} className="text-[11px] text-white/50 pl-3 border-l border-violet-500/20 mb-1">{s}</p>
+                                        <p key={i} className="text-[11px] text-[#241f18]/55 dark:text-white/50 pl-3 border-l border-violet-500/20 mb-1">{s}</p>
                                     ))}
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
                                         <p className="text-[10px] text-emerald-400/80 font-medium mb-1">✅ Green Flags</p>
                                         {g.greenFlags.map((f, i) => (
-                                            <p key={i} className="text-[10px] text-white/40 mb-0.5 flex items-start gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500/60 shrink-0 mt-0.5" />{f}</p>
+                                            <p key={i} className="text-[10px] text-[#241f18]/45 dark:text-white/40 mb-0.5 flex items-start gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500/60 shrink-0 mt-0.5" />{f}</p>
                                         ))}
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-red-400/80 font-medium mb-1">🚩 Red Flags</p>
                                         {g.redFlags.map((f, i) => (
-                                            <p key={i} className="text-[10px] text-white/40 mb-0.5 flex items-start gap-1"><AlertTriangle className="w-3 h-3 text-red-500/60 shrink-0 mt-0.5" />{f}</p>
+                                            <p key={i} className="text-[10px] text-[#241f18]/45 dark:text-white/40 mb-0.5 flex items-start gap-1"><AlertTriangle className="w-3 h-3 text-red-500/60 shrink-0 mt-0.5" />{f}</p>
                                         ))}
                                     </div>
                                 </div>
@@ -376,8 +376,8 @@ function GuidanceTab({ expandedItems, toggleExpand }: { expandedItems: Set<strin
                                     <div className="space-y-1">
                                         {g.scoringCriteria.map(sc => (
                                             <div key={sc.score} className="flex items-center gap-2">
-                                                <span className="w-5 h-5 rounded bg-white/[0.06] flex items-center justify-center text-[10px] font-bold text-white/60">{sc.score}</span>
-                                                <p className="text-[10px] text-white/40">{sc.description}</p>
+                                                <span className="w-5 h-5 rounded bg-[#241f18]/[0.06] dark:bg-white/[0.06] flex items-center justify-center text-[10px] font-bold text-[#241f18]/60 dark:text-white/60">{sc.score}</span>
+                                                <p className="text-[10px] text-[#241f18]/45 dark:text-white/40">{sc.description}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -396,51 +396,51 @@ function InstructionsTab({ expandedItems, toggleExpand }: { expandedItems: Set<s
     return (
         <div className="space-y-5">
             <div>
-                <h3 className="text-sm font-semibold text-white">Candidate Instructions</h3>
-                <p className="text-[11px] text-white/40 mt-0.5">Auto-generated briefs for each interview section</p>
+                <h3 className="text-sm font-semibold text-[#241f18] dark:text-white">Candidate Instructions</h3>
+                <p className="text-[11px] text-[#241f18]/45 dark:text-white/40 mt-0.5">Auto-generated briefs for each interview section</p>
             </div>
 
             {DEMO_CANDIDATE_INSTRUCTIONS.map(ci => {
                 const isOpen = expandedItems.has(ci.id)
                 return (
-                    <div key={ci.id} className="rounded-xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
+                    <div key={ci.id} className="rounded-xl border border-[#ded2c2] dark:border-white/[0.08] bg-[#241f18]/[0.02] dark:bg-white/[0.02] overflow-hidden">
                         <button onClick={() => toggleExpand(ci.id)} className="w-full px-4 py-3 flex items-center justify-between text-left">
                             <div className="flex items-center gap-3">
-                                {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-white/30 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-white/30 shrink-0" />}
+                                {isOpen ? <ChevronDown className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-[#241f18]/45 dark:text-white/30 shrink-0" />}
                                 <div>
-                                    <p className="text-[12px] text-white/70 font-medium">{ci.section}</p>
-                                    <p className="text-[10px] text-white/30 mt-0.5">Time limit: {ci.timeLimit}</p>
+                                    <p className="text-[12px] text-[#241f18]/70 dark:text-white/70 font-medium">{ci.section}</p>
+                                    <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 mt-0.5">Time limit: {ci.timeLimit}</p>
                                 </div>
                             </div>
                         </button>
                         {isOpen && (
-                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-4 pb-4 space-y-3 border-t border-white/[0.06] pt-3">
-                                <div className="rounded-lg bg-white/[0.03] p-3">
-                                    <p className="text-[11px] text-white/60">{ci.briefing}</p>
+                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-4 pb-4 space-y-3 border-t border-[#ded2c2]/60 dark:border-white/[0.06] pt-3">
+                                <div className="rounded-lg bg-[#241f18]/[0.03] dark:bg-white/[0.03] p-3">
+                                    <p className="text-[11px] text-[#241f18]/60 dark:text-white/60">{ci.briefing}</p>
                                 </div>
                                 <div>
-                                    <p className="text-[10px] text-white/30 uppercase tracking-wider font-medium mb-1.5">Expectations</p>
+                                    <p className="text-[10px] text-[#241f18]/45 dark:text-white/30 uppercase tracking-wider font-medium mb-1.5">Expectations</p>
                                     {ci.expectations.map((e, i) => (
-                                        <p key={i} className="text-[11px] text-white/50 pl-3 border-l border-white/10 mb-1">{e}</p>
+                                        <p key={i} className="text-[11px] text-[#241f18]/55 dark:text-white/50 pl-3 border-l border-[#ded2c2] dark:border-white/10 mb-1">{e}</p>
                                     ))}
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
                                         <p className="text-[10px] text-emerald-400/80 font-medium mb-1">✅ Do</p>
                                         {ci.doList.map((d, i) => (
-                                            <p key={i} className="text-[10px] text-white/40 mb-0.5">{d}</p>
+                                            <p key={i} className="text-[10px] text-[#241f18]/45 dark:text-white/40 mb-0.5">{d}</p>
                                         ))}
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-red-400/80 font-medium mb-1">❌ Don&apos;t</p>
                                         {ci.dontList.map((d, i) => (
-                                            <p key={i} className="text-[10px] text-white/40 mb-0.5">{d}</p>
+                                            <p key={i} className="text-[10px] text-[#241f18]/45 dark:text-white/40 mb-0.5">{d}</p>
                                         ))}
                                     </div>
                                 </div>
                                 <div className="rounded-lg bg-blue-500/5 border border-blue-500/20 p-3">
                                     <p className="text-[10px] text-blue-400/80 font-medium mb-1">📋 How You&apos;ll Be Evaluated</p>
-                                    <p className="text-[11px] text-white/50">{ci.evaluationPreview}</p>
+                                    <p className="text-[11px] text-[#241f18]/55 dark:text-white/50">{ci.evaluationPreview}</p>
                                 </div>
                             </motion.div>
                         )}
