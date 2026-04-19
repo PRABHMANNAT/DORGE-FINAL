@@ -1,0 +1,17 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#0B0C0D"/>
+  <rect width="512" height="512" fill="url(#grain)" opacity="0.16"/>
+  <path d="M117 126H168V177H117V126Z" fill="white"/>
+  <path d="M117 198H168V386L117 436V198Z" fill="white"/>
+  <path d="M189 126H235L293 236V126H344V272L298 318L189 126Z" fill="white"/>
+  <path d="M189 218L259 292L189 362V218Z" fill="white"/>
+  <defs>
+    <filter id="noise" x="0" y="0" width="512" height="512" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <pattern id="grain" width="512" height="512" patternUnits="userSpaceOnUse">
+      <rect width="512" height="512" filter="url(#noise)"/>
+    </pattern>
+  </defs>
+</svg>

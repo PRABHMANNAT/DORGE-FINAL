@@ -1,0 +1,18 @@
+<svg width="360" height="150" viewBox="0 0 360 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IBM">
+  <defs>
+    <clipPath id="ibm-letters-light">
+      <text x="16" y="119" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="126" font-weight="900" letter-spacing="-8">IBM</text>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#ibm-letters-light)" fill="#4F7FC8">
+    <rect x="0" y="22" width="360" height="8"/>
+    <rect x="0" y="38" width="360" height="8"/>
+    <rect x="0" y="54" width="360" height="8"/>
+    <rect x="0" y="70" width="360" height="8"/>
+    <rect x="0" y="86" width="360" height="8"/>
+    <rect x="0" y="102" width="360" height="8"/>
+    <rect x="0" y="118" width="360" height="8"/>
+  </g>
+  <circle cx="338" cy="116" r="6" stroke="#4F7FC8" stroke-width="1.5"/>
+  <text x="334.5" y="120.2" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#4F7FC8">R</text>
+</svg>

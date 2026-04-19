@@ -6,6 +6,7 @@ export interface Candidate {
     name: string
     username: string
     github: string
+    avatarUrl?: string
     portfolio: string
     portfolioExtraction?: any
     writingLinks: string[]
@@ -76,10 +77,149 @@ export interface Candidate {
         diversityScore: number // breadth of different areas explored
         recentMilestones: string[]
     }
+    studentProfile?: {
+        universityHandle: string
+        university: string
+        degree: string
+        expectedGraduation: string
+        gpa: string
+        campus: string
+        bio: string
+        coursework: Array<{ label: string; value: number; color: string }>
+        metrics: {
+            vamScore: number
+            projects: number
+            hackathons: number
+            publications: number
+        }
+        skillsChart: Array<{ name: string; value: number }>
+        signals: {
+            internshipOffers: number
+            researchContributions: number
+            certifications: number
+        }
+        technicalSkills: Array<{
+            name: string
+            tags: string[]
+            indicators: string[]
+        }>
+        academicInterests: Array<{
+            name: string
+            tags: string[]
+            indicators: string[]
+        }>
+    }
 }
 
 const ROLES: RoleType[] = ["engineer", "designer", "pm", "founder"]
 const LANGUAGES = ["TypeScript", "Rust", "Go", "Python", "C++", "Swift", "Kotlin"]
+const UNIVERSITIES = [
+    { name: "University of Sydney", campus: "Sydney, NSW", suffix: "sydney.edu.au" },
+    { name: "University of Toronto", campus: "Toronto, ON", suffix: "mail.utoronto.ca" },
+    { name: "Carnegie Mellon University", campus: "Pittsburgh, PA", suffix: "andrew.cmu.edu" },
+    { name: "National University of Singapore", campus: "Singapore", suffix: "u.nus.edu" },
+    { name: "University of Waterloo", campus: "Waterloo, ON", suffix: "uwaterloo.ca" },
+    { name: "UC Berkeley", campus: "Berkeley, CA", suffix: "berkeley.edu" },
+]
+
+const STUDENT_BIOS = [
+    "Computer science student focused on compilers, systems projects, and research-backed engineering work.",
+    "Student builder combining algorithms coursework with practical ML and infrastructure projects.",
+    "Undergraduate researcher exploring programming languages, static analysis, and developer tooling.",
+    "Final-year student shipping applied AI projects while staying close to data structures and systems fundamentals.",
+    "Scholarship student active in hackathons, research labs, and open-source engineering communities.",
+]
+
+function getStudentAvatarUrl(username: string, variant: "github" | "generated" = "generated") {
+    if (variant === "github") return `https://github.com/${username}.png`
+
+    const seed = encodeURIComponent(username)
+    return `https://api.dicebear.com/9.x/personas/svg?seed=${seed}&backgroundColor=111827,1f2937,0f172a&radius=50`
+}
+
+function generateStudentProfile(index: number, name: string, username: string, bio?: string): Candidate["studentProfile"] {
+    const university = UNIVERSITIES[index % UNIVERSITIES.length]
+    const graduationYear = 2026 + (index % 3)
+    const vamScore = 78 + (index % 20)
+
+    return {
+        universityHandle: `${username}@${university.suffix}`,
+        university: university.name,
+        degree: index % 2 === 0 ? "B.S. Computer Science" : "M.S. Computer Science",
+        expectedGraduation: `${graduationYear}`,
+        gpa: `${(3.55 + (index % 7) * 0.05).toFixed(2)}/4.0`,
+        campus: university.campus,
+        bio: bio || `${name} is a ${STUDENT_BIOS[index % STUDENT_BIOS.length].charAt(0).toLowerCase()}${STUDENT_BIOS[index % STUDENT_BIOS.length].slice(1)}`,
+        coursework: [
+            { label: "CS", value: 35, color: "#f97316" },
+            { label: "Math", value: 25, color: "#fb923c" },
+            { label: "AI", value: 20, color: "#fdba74" },
+            { label: "Systems", value: 20, color: "#fff7ed" },
+        ],
+        metrics: {
+            vamScore,
+            projects: 8 + (index % 12),
+            hackathons: 2 + (index % 6),
+            publications: index % 4,
+        },
+        skillsChart: [
+            { name: "Rust", value: 72 + (index % 21) },
+            { name: "Python", value: 78 + (index % 17) },
+            { name: "ML", value: 58 + (index % 28) },
+            { name: "Data Structures", value: 80 + (index % 16) },
+            { name: "Systems", value: 66 + (index % 25) },
+        ],
+        signals: {
+            internshipOffers: index % 5,
+            researchContributions: 1 + (index % 7),
+            certifications: index % 3,
+        },
+        technicalSkills: [
+            {
+                name: "Compiler and Parser Engineering",
+                tags: ["Rust", "Parsing", "IR"],
+                indicators: [
+                    "Built parser and semantic analysis projects for coursework",
+                    "Contributed to compiler frontend experiments and language tooling",
+                ],
+            },
+            {
+                name: "Algorithms and Data Structures",
+                tags: ["Graphs", "DP", "Complexity"],
+                indicators: [
+                    "Strong performance in advanced algorithms modules",
+                    "Applies complexity tradeoffs in project writeups",
+                ],
+            },
+            {
+                name: "Applied Machine Learning",
+                tags: ["Python", "PyTorch", "Evaluation"],
+                indicators: [
+                    "Trains small models with reproducible validation",
+                    "Uses error analysis to improve project outcomes",
+                ],
+            },
+        ],
+        academicInterests: [
+            {
+                name: "Programming Languages",
+                tags: ["Type Systems", "Static Analysis"],
+                indicators: [
+                    "Interested in parser generators, compiler correctness, and developer tooling",
+                    "Tracks language implementation papers and open-source PL projects",
+                ],
+            },
+            {
+                name: "Systems Research",
+                tags: ["OS", "Performance"],
+                indicators: [
+                    "Explores low-level performance and kernel-facing abstractions",
+                    "Connects systems coursework to practical profiling tasks",
+                ],
+            },
+        ],
+    }
+}
 
 function generateCandidates(count: number): Candidate[] {
     const candidates: Candidate[] = []
@@ -186,6 +326,7 @@ function generateCandidates(count: number): Candidate[] {
             name: vip.name!,
             username: vip.username!,
             github: vip.username!,
+            avatarUrl: getStudentAvatarUrl(vip.username!, "github"),
             portfolio: `https://${vip.username}.com`,
             writingLinks: [`https://${vip.username}.com/blog`],
             resumeText: `${vip.name} - ${vip.bio}\nExperienced in ${LANGUAGES.slice(0, 3).join(", ")}.`,
@@ -201,7 +342,8 @@ function generateCandidates(count: number): Candidate[] {
             ],
             extendedSkills: vip.extendedSkills,
             recentInterests: vip.recentInterests,
-            learningVelocity: vip.learningVelocity || generateRandomLearningVelocity()
+            learningVelocity: vip.learningVelocity || generateRandomLearningVelocity(),
+            studentProfile: generateStudentProfile(i, vip.name!, vip.username!, i === 0 ? vip.bio : undefined)
         })
     })
 
@@ -217,6 +359,7 @@ function generateCandidates(count: number): Candidate[] {
             name: `${firstName} ${lastName}`,
             username: username,
             github: username,
+            avatarUrl: getStudentAvatarUrl(username),
             portfolio: `https://${username}.dev`,
             writingLinks: [],
             resumeText: `Experienced ${role} with focus on scalability and performance.`,
@@ -238,7 +381,8 @@ function generateCandidates(count: number): Candidate[] {
             ],
             extendedSkills: generateRandomExtendedSkills(role),
             recentInterests: generateRandomRecentInterests(),
-            learningVelocity: generateRandomLearningVelocity()
+            learningVelocity: generateRandomLearningVelocity(),
+            studentProfile: generateStudentProfile(i + VIPs.length, `${firstName} ${lastName}`, username)
         })
     }
 
